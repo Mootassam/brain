@@ -1,17 +1,21 @@
 import mongoose from 'mongoose';
 import express, { Application, Request, Response } from 'express';
+import phoneNumberRoutes from './routes/phoneNumberRoutes'
+import cors from 'cors';
 
-import phoneNumberRoutes from './src/routes/phoneNumberRoutes'
-
-
-const url = 'mongodb://localhost:27017';
-const dbName = 'numbers';
-
+const router = express.Router();
 const app: Application = express();
 const PORT = 8080;
+const bodyParser = require('body-parser');
+
+
+app.use(cors());
+
+router.use(bodyParser.urlencoded({ extended: false }));
+router.use(bodyParser.json());
 
 mongoose
-  .connect('mongodb://localhost:27017/mydatabase', {
+  .connect('mongodb://localhost:27017/phonenumber', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -27,7 +31,7 @@ mongoose
   });
 
 
-app.use('/phoneNumbers', phoneNumberRoutes);
+app.use('/api/phone', phoneNumberRoutes);
 
 app.get('/', (req: Request, res: Response) => {
     res.send('Welcome to the API');
