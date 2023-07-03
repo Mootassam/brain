@@ -3,9 +3,9 @@ import PhoneNumberGenerator from "../utils/phoneNumberGenerator";
 import UserModel from "../models/User"; // Update the import statement to the correct file
 
 class PhoneNumberController {
-  static generatePhoneNumbers(req: Request, res: Response) {
+  static async generatePhoneNumbers(req: Request, res: Response) {
     try {
-      const phoneNumbers = PhoneNumberGenerator.generatePhoneNumbers();
+      const phoneNumbers = await PhoneNumberGenerator.generatePhoneNumbers();
       res.json(phoneNumbers);
     } catch (error) {
       res.status(500).json({ error: "Internal server error" });
