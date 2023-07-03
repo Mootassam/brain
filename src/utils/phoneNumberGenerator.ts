@@ -4,12 +4,11 @@ class PhoneNumberGenerator {
   static async generatePhoneNumbers() {
     const phoneNumbers: string[] = [];
     for (let i = 0; i < 1000; i++) {
-      let phoneNumber =  await this.generatePhoneNumber();
-      let isDuplicate =  await this.checkDuplicatePhoneNumber(phoneNumber);
+      let phoneNumber = await this.generatePhoneNumber();
+      let isDuplicate = await this.checkDuplicatePhoneNumber(phoneNumber);
       if (!isDuplicate) {
         phoneNumbers.push(phoneNumber);
       }
-   
     }
     return phoneNumbers;
   }
