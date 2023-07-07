@@ -22,7 +22,7 @@ mongoose
   .then(() => {
     console.log('Connected to MongoDB');
     // Start the server after successful database connection
-    app.listen(PORT, () => {
+    app.listen(PORT,'192.168.10.57' , () => {
       console.log(`Server is running on port ${PORT}`);
     });
   })
